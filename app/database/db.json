@@ -4,69 +4,109 @@
         "make": "Toyota",
         "model": "Corolla",
         "year": 2020,
-        "features": ["Bluetooth", "Air Conditioning", "Backup Camera"]
+        "features": [
+            "Bluetooth",
+            "Air Conditioning",
+            "Backup Camera"
+        ]
     },
     {
         "id": 2,
         "make": "Honda",
         "model": "Civic",
         "year": 2019,
-        "features": ["Cruise Control", "Heated Seats", "Sunroof"]
+        "features": [
+            "Cruise Control",
+            "Heated Seats",
+            "Sunroof"
+        ]
     },
     {
         "id": 3,
         "make": "Ford",
         "model": "Focus",
         "year": 2021,
-        "features": ["Navigation System", "Blind Spot Monitor", "Apple CarPlay"]
+        "features": [
+            "Navigation System",
+            "Blind Spot Monitor",
+            "Apple CarPlay"
+        ]
     },
     {
         "id": 4,
         "make": "Chevrolet",
         "model": "Malibu",
         "year": 2022,
-        "features": ["Wi-Fi Hotspot", "Lane Departure Warning", "Remote Start"]
+        "features": [
+            "Wi-Fi Hotspot",
+            "Lane Departure Warning",
+            "Remote Start"
+        ]
     },
     {
         "id": 5,
         "make": "Nissan",
         "model": "Altima",
         "year": 2021,
-        "features": ["ProPILOT Assist", "All-Wheel Drive", "Android Auto"]
+        "features": [
+            "ProPILOT Assist",
+            "All-Wheel Drive",
+            "Android Auto"
+        ]
     },
     {
         "id": 6,
         "make": "BMW",
         "model": "3 Series",
         "year": 2023,
-        "features": ["Gesture Control", "Harman Kardon Sound System", "Heads-Up Display"]
+        "features": [
+            "Gesture Control",
+            "Harman Kardon Sound System",
+            "Heads-Up Display"
+        ]
     },
     {
         "id": 7,
         "make": "Audi",
         "model": "A4",
         "year": 2020,
-        "features": ["Virtual Cockpit", "Quattro AWD", "LED Headlights"]
+        "features": [
+            "Virtual Cockpit",
+            "Quattro AWD",
+            "LED Headlights"
+        ]
     },
     {
         "id": 8,
         "make": "Mercedes-Benz",
         "model": "C-Class",
         "year": 2021,
-        "features": ["MBUX System", "Panoramic Roof", "Ambient Lighting"]
+        "features": [
+            "MBUX System",
+            "Panoramic Roof",
+            "Ambient Lighting"
+        ]
     },
     {
         "id": 9,
         "make": "Volkswagen",
         "model": "Passat",
         "year": 2022,
-        "features": ["Digital Cockpit", "Adaptive Cruise Control", "Park Assist"]
+        "features": [
+            "Digital Cockpit",
+            "Adaptive Cruise Control",
+            "Park Assist"
+        ]
     },
     {
         "id": 10,
         "make": "Hyundai",
         "model": "Elantra",
         "year": 2023,
-        "features": ["Wireless Charging", "SmartSense", "Bose Premium Audio"]
+        "features": [
+            "Wireless Charging",
+            "SmartSense",
+            "Bose Premium Audio"
+        ]
     }
 ]
