@@ -1,0 +1,122 @@
+[
+    {
+        "year": 2020,
+        "model": "Corolla",
+        "country": "USA",
+        "units_sold": 150000
+    },
+    {
+        "year": 2020,
+        "model": "Corolla",
+        "country": "Canada",
+        "units_sold": 50000
+    },
+    {
+        "year": 2021,
+        "model": "Civic",
+        "country": "UK",
+        "units_sold": 30000
+    },
+    {
+        "year": 2022,
+        "model": "Civic",
+        "country": "Germany",
+        "units_sold": 20000
+    },
+    {
+        "year": 2021,
+        "model": "Focus",
+        "country": "Japan",
+        "units_sold": 40000
+    },
+    {
+        "year": 2023,
+        "model": "Focus",
+        "country": "France",
+        "units_sold": 10000
+    },
+    {
+        "year": 2020,
+        "model": "Malibu",
+        "country": "Italy",
+        "units_sold": 25000
+    },
+    {
+        "year": 2021,
+        "model": "Malibu",
+        "country": "USA",
+        "units_sold": 18000
+    },
+    {
+        "year": 2022,
+        "model": "Altima",
+        "country": "Netherlands",
+        "units_sold": 22000
+    },
+    {
+        "year": 2023,
+        "model": "Altima",
+        "country": "South Korea",
+        "units_sold": 35000
+    },
+    {
+        "year": 2020,
+        "model": "3 Series",
+        "country": "Mexico",
+        "units_sold": 27000
+    },
+    {
+        "year": 2021,
+        "model": "3 Series",
+        "country": "Australia",
+        "units_sold": 32000
+    },
+    {
+        "year": 2022,
+        "model": "A4",
+        "country": "New Zealand",
+        "units_sold": 15000
+    },
+    {
+        "year": 2023,
+        "model": "A4",
+        "country": "China",
+        "units_sold": 500000
+    },
+    {
+        "year": 2020,
+        "model": "C-Class",
+        "country": "Sweden",
+        "units_sold": 12000
+    },
+    {
+        "year": 2021,
+        "model": "C-Class",
+        "country": "India",
+        "units_sold": 8000
+    },
+    {
+        "year": 2022,
+        "model": "Passat",
+        "country": "Thailand",
+        "units_sold": 9000
+    },
+    {
+        "year": 2023,
+        "model": "Passat",
+        "country": "Switzerland",
+        "units_sold": 7000
+    },
+    {
+        "year": 2021,
+        "model": "Elantra",
+        "country": "Brazil",
+        "units_sold": 11000
+    },
+    {
+        "year": 2022,
+        "model": "Elantra",
+        "country": "Argentina",
+        "units_sold": 9500
+    }
+]

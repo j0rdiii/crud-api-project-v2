@@ -1,231 +1,72 @@
 [
     {
         "id": 1,
-        "make": "Tesla",
-        "model": "Model S",
-        "year": 2023,
-        "features": [
-            "Autopilot",
-            "Electric",
-            "Ludicrous Mode"
-        ]
+        "make": "Toyota",
+        "model": "Corolla",
+        "year": 2020,
+        "features": ["Bluetooth", "Air Conditioning", "Backup Camera"]
     },
     {
         "id": 2,
-        "make": "BMW",
-        "model": "M4",
-        "year": 2022,
-        "features": [
-            "Twin Turbo",
-            "Sport Seats",
-            "Launch Control"
-        ]
+        "make": "Honda",
+        "model": "Civic",
+        "year": 2019,
+        "features": ["Cruise Control", "Heated Seats", "Sunroof"]
     },
     {
         "id": 3,
-        "make": "Audi",
-        "model": "RS6 Avant",
-        "year": 2022,
-        "features": [
-            "Quattro AWD",
-            "Panoramic Roof",
-            "Virtual Cockpit"
-        ]
+        "make": "Ford",
+        "model": "Focus",
+        "year": 2021,
+        "features": ["Navigation System", "Blind Spot Monitor", "Apple CarPlay"]
     },
     {
         "id": 4,
-        "make": "Porsche",
-        "model": "911 Turbo S",
-        "year": 2023,
-        "features": [
-            "Launch Control",
-            "PASM Suspension",
-            "Carbon Ceramic Brakes"
-        ]
+        "make": "Chevrolet",
+        "model": "Malibu",
+        "year": 2022,
+        "features": ["Wi-Fi Hotspot", "Lane Departure Warning", "Remote Start"]
     },
     {
         "id": 5,
-        "make": "Lamborghini",
-        "model": "Hurac\u00c3\u00a1n EVO",
-        "year": 2022,
-        "features": [
-            "V10 Engine",
-            "LDVI System",
-            "Carbon Fiber"
-        ]
+        "make": "Nissan",
+        "model": "Altima",
+        "year": 2021,
+        "features": ["ProPILOT Assist", "All-Wheel Drive", "Android Auto"]
     },
     {
         "id": 6,
-        "make": "Ferrari",
-        "model": "F8 Tributo",
-        "year": 2021,
-        "features": [
-            "V8 Biturbo",
-            "Manettino Switch",
-            "Aerodynamic Body"
-        ]
+        "make": "BMW",
+        "model": "3 Series",
+        "year": 2023,
+        "features": ["Gesture Control", "Harman Kardon Sound System", "Heads-Up Display"]
     },
     {
         "id": 7,
-        "make": "Mercedes-Benz",
-        "model": "AMG GT R",
-        "year": 2022,
-        "features": [
-            "Racing Exhaust",
-            "Active Aero",
-            "Hand-Built Engine"
-        ]
+        "make": "Audi",
+        "model": "A4",
+        "year": 2020,
+        "features": ["Virtual Cockpit", "Quattro AWD", "LED Headlights"]
     },
     {
         "id": 8,
-        "make": "McLaren",
-        "model": "720S",
-        "year": 2023,
-        "features": [
-            "Dihedral Doors",
-            "Carbon Monocage II",
-            "Proactive Chassis Control"
-        ]
+        "make": "Mercedes-Benz",
+        "model": "C-Class",
+        "year": 2021,
+        "features": ["MBUX System", "Panoramic Roof", "Ambient Lighting"]
     },
     {
         "id": 9,
-        "make": "Nissan",
-        "model": "GT-R NISMO",
-        "year": 2021,
-        "features": [
-            "Twin-Turbo V6",
-            "AWD",
-            "Carbon Hood"
-        ]
+        "make": "Volkswagen",
+        "model": "Passat",
+        "year": 2022,
+        "features": ["Digital Cockpit", "Adaptive Cruise Control", "Park Assist"]
     },
     {
         "id": 10,
-        "make": "Toyota",
-        "model": "Supra GR",
-        "year": 2022,
-        "features": [
-            "BMW Engine",
-            "Launch Control",
-            "Sport Exhaust"
-        ]
-    },
-    {
-        "id": 11,
-        "make": "Ford",
-        "model": "Mustang Mach 1",
-        "year": 2023,
-        "features": [
-            "5.0L V8",
-            "Track Apps",
-            "Active Valve Exhaust"
-        ]
-    },
-    {
-        "id": 12,
-        "make": "Chevrolet",
-        "model": "Camaro ZL1",
-        "year": 2022,
-        "features": [
-            "Supercharged V8",
-            "Magnetic Ride Control",
-            "Recaro Seats"
-        ]
-    },
-    {
-        "id": 13,
-        "make": "Dodge",
-        "model": "Challenger Hellcat",
-        "year": 2022,
-        "features": [
-            "Supercharged 6.2L HEMI",
-            "Launch Assist",
-            "SRT Mode"
-        ]
-    },
-    {
-        "id": 14,
-        "make": "Alfa Romeo",
-        "model": "Giulia Quadrifoglio",
-        "year": 2021,
-        "features": [
-            "Twin Turbo V6",
-            "RWD",
-            "DNA Drive Mode"
-        ]
-    },
-    {
-        "id": 15,
-        "make": "Mazda",
-        "model": "MX-5 Miata RF",
-        "year": 2023,
-        "features": [
-            "Convertible Roof",
-            "Bose Audio",
-            "Lightweight Body"
-        ]
-    },
-    {
-        "id": 16,
         "make": "Hyundai",
-        "model": "i30 N Performance",
-        "year": 2022,
-        "features": [
-            "Rev Matching",
-            "N Grin Shift",
-            "Launch Control"
-        ]
-    },
-    {
-        "id": 17,
-        "make": "Kia",
-        "model": "Stinger GT",
-        "year": 2022,
-        "features": [
-            "Twin Turbo V6",
-            "AWD",
-            "Harman Kardon Audio"
-        ]
-    },
-    {
-        "id": 18,
-        "make": "Volkswagen",
-        "model": "Golf R",
+        "model": "Elantra",
         "year": 2023,
-        "features": [
-            "Drift Mode",
-            "4Motion AWD",
-            "Digital Cockpit Pro"
-        ]
-    },
-    {
-        "id": 19,
-        "make": "Subaru",
-        "model": "WRX STI",
-        "year": 2021,
-        "features": [
-            "Symmetrical AWD",
-            "Turbo Boxer Engine",
-            "SI-Drive"
-        ]
-    },
-    {
-        "id": 20,
-        "make": "Aston Martin",
-        "model": "Vantage",
-        "year": 2023,
-        "features": [
-            "Handcrafted Interior",
-            "Sportshift Transmission",
-            "AMR Dynamics"
-        ]
-    },
-    {
-        "id": 21,
-        "make": "adfasdf",
-        "model": "adsfasdf",
-        "year": 1244,
-        "features": [
-            "fdsfasdf"
-        ]
+        "features": ["Wireless Charging", "SmartSense", "Bose Premium Audio"]
     }
 ]

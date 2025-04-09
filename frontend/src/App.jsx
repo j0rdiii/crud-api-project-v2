@@ -1,4 +1,6 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Search, Car, PlusCircle, ArrowLeft } from 'lucide-react';
+import SalesDetail from './pages/SalesDetail';
 import CarForm from './components/CarForm';
 import CarList from './components/CarList';
 import { useEffect, useState, useRef } from 'react';
@@ -72,85 +74,95 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top animate-slide-in-top">
-        <div className="container-fluid px-4 d-flex justify-content-between align-items-center position-relative">
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="app-container">
+              {/* Navbar */}
+              <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top animate-slide-in-top">
+                <div className="container-fluid px-4 d-flex justify-content-between align-items-center position-relative">
 
-          {/* Izquierda: Título + icono */}
-          <div className="d-flex align-items-center">
-            <Car className="me-2 text-primary" size={24} />
-            <span className="fw-bold text-primary fs-5">Tu Garaje Virtual</span>
-          </div>
+                  {/* Izquierda: Título + icono */}
+                  <div className="d-flex align-items-center">
+                    <Car className="me-2 text-primary" size={24} />
+                    <span className="fw-bold text-primary fs-5">Tu Garaje Virtual</span>
+                  </div>
 
-          {/* Centro absoluto: Buscador */}
-          {!showForm && (
-            <form
-              className="position-absolute start-50 translate-middle-x animate-fade-up"
-              style={{ width: '700px', zIndex: 1 }}
-            >
-              <div className="input-group shadow-sm">
-                <span className="input-group-text bg-light">
-                  <Search />
-                </span>
-                <input
-                  type="text"
-                  className="form-control form-control-lg fw-semibold"
-                  style={{ height: '56px', fontSize: '1.1rem' }}
-                  placeholder="Buscar por modelo..."
-                  value={search}
-                  onChange={(e) => handleSearch(e.target.value)}
-                />
-                {isSearching && (
-                  <div className="d-flex align-items-center ms-3 animate-fade-in" style={{ animationDuration: '0.4s' }}>
-                    <div className="spinner-border text-primary me-2" role="status">
-                      <span className="visually-hidden">Buscando...</span>
-                    </div>
-                    <span className="text-primary fw-medium">Buscando coches...</span>
+                  {/* Centro absoluto: Buscador */}
+                  {!showForm && (
+                    <form
+                      className="position-absolute start-50 translate-middle-x animate-fade-up"
+                      style={{ width: '700px', zIndex: 1 }}
+                    >
+                      <div className="input-group shadow-sm">
+                        <span className="input-group-text bg-light">
+                          <Search />
+                        </span>
+                        <input
+                          type="text"
+                          className="form-control form-control-lg fw-semibold"
+                          style={{ height: '56px', fontSize: '1.1rem' }}
+                          placeholder="Buscar por modelo..."
+                          value={search}
+                          onChange={(e) => handleSearch(e.target.value)}
+                        />
+                        {isSearching && (
+                          <div className="d-flex align-items-center ms-3 animate-fade-in" style={{ animationDuration: '0.4s' }}>
+                            <div className="spinner-border text-primary me-2" role="status">
+                              <span className="visually-hidden">Buscando...</span>
+                            </div>
+                            <span className="text-primary fw-medium">Buscando coches...</span>
+                          </div>
+                        )}
+                      </div>
+                    </form>
+                  )}
+
+                  {/* Derecha: Botón dinámico */}
+                  <div className="d-flex animate-pop">
+                    {showForm ? (
+                      <button
+                        className="btn btn-outline-secondary d-flex align-items-center"
+                        onClick={() => setShowForm(false)}
+                      >
+                        <ArrowLeft className="me-2" />
+                        Volver a búsqueda
+                      </button>
+                    ) : (
+                      <button
+                        className="btn btn-primary d-flex align-items-center justify-content-center"
+                        onClick={() => {
+                          setEditingCar(null);
+                          setShowForm(true);
+                        }}
+                        style={{ width: "42px", height: "42px", padding: 0 }}
+                      >
+                        <PlusCircle size={20} />
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </nav>
+              {/* Contenido */}
+              <div className="content-container mt-5 pt-4 animate-fade-up">
+                {showForm ? (
+                  <div className="form-container animate-bounce">
+                    <CarForm onSubmit={handleCreate} editingCar={editingCar} />
+                  </div>
+                ) : (
+                  <div className="animate-fade-up">
+                    <CarList cars={cars} onEdit={handleEdit} onDelete={handleDelete} />
                   </div>
                 )}
               </div>
-            </form>
-          )}
-
-          {/* Derecha: Botón dinámico */}
-          <div className="d-flex animate-pop">
-            {showForm ? (
-              <button
-                className="btn btn-outline-secondary d-flex align-items-center"
-                onClick={() => setShowForm(false)}
-              >
-                <ArrowLeft className="me-2" />
-                Volver a búsqueda
-              </button>
-            ) : (
-              <button
-                className="btn btn-primary d-flex align-items-center justify-content-center"
-                onClick={() => {
-                  setEditingCar(null);
-                  setShowForm(true);
-                }}
-                style={{ width: "42px", height: "42px", padding: 0 }}
-              >
-                <PlusCircle size={20} />
-              </button>
-            )}
-          </div>
-        </div>
-      </nav>
-      {/* Contenido */}
-      <div className="content-container mt-5 pt-4 animate-fade-up">
-        {showForm ? (
-          <div className="form-container animate-bounce">
-            <CarForm onSubmit={handleCreate} editingCar={editingCar} />
-          </div>
-        ) : (
-          <div className="animate-fade-up">
-            <CarList cars={cars} onEdit={handleEdit} onDelete={handleDelete} />
-          </div>
-        )}
-      </div>
-    </div>
+            </div>
+          }
+        />
+        <Route path="/sales/:model" element={<SalesDetail />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -26,3 +26,19 @@ export const getCars = async () => {
   export const deleteCar = async (index) => {
     await fetch(`/cars/${index}`, { method: 'DELETE' });
   };
+
+  export async function getSales({ model, country, year, page = 1 }) {
+    const params = new URLSearchParams();
+  
+    if (model) params.append("model", model);
+    if (country) params.append("country", country);
+    if (year) params.append("year", year);
+    if (page) params.append("page", page);
+  
+    const response = await fetch(`/sales?${params.toString()}`);
+    if (!response.ok) {
+      throw new Error("Error al obtener ventas");
+    }
+    return response.json();
+  }
+  
