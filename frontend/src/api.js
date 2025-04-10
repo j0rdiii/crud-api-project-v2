@@ -36,4 +36,3 @@ export async function getSales({ model, country, year, page = 1, limit = 5 }) {
   }
   return response.json();
 }
-

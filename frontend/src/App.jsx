@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Search, Car, BarChart, ArrowLeft } from 'lucide-react'; // Importar BarChart
 import SalesCharts from './pages/SalesCharts';
 import CarForm from './components/CarForm';
@@ -18,7 +18,7 @@ function App() {
   const searchTimeout = useRef(null);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
-  const limit = 9;
+  const limit = 6;
 
   useEffect(() => {
     loadCars();
@@ -190,7 +190,8 @@ function App() {
         <Route path="/sales/:model" element={<SalesCharts />} />
         <Route 
           path="/annual-sales" 
-          element={<SalesCharts initialViewAnnualSales={true}/>} /> {/* Nueva ruta */}
+          element={<SalesCharts initialViewAnnualSales={true}/>} />
+
       </Routes>
     </Router>
   );
