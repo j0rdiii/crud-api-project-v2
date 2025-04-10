@@ -22,7 +22,7 @@ export default function CarItem({ car, index, onEdit, onDelete }) {
             🗑️ Borrar
           </button>
           <button
-            className="btn btn-sm btn-outline-dark"
+            className="btn btn-sm btn-outline-success"
             onClick={() => navigate(`/sales/${car.model.toLowerCase()}`)}
           >
             <BarChart size={16} className="me-1" />

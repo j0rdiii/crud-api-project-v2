@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Search, Car, PlusCircle, ArrowLeft } from 'lucide-react';
-import SalesDetail from './pages/SalesDetail';
+import { Search, Car, BarChart, ArrowLeft } from 'lucide-react'; // Importar BarChart
+import SalesCharts from './pages/SalesCharts';
 import CarForm from './components/CarForm';
 import CarList from './components/CarList';
 import { useEffect, useState, useRef } from 'react';
-import { createCar, updateCar, deleteCar } from './api';
+import { createCar, updateCar, deleteCar, getCars } from './api';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -16,17 +16,19 @@ function App() {
   const [isSearching, setIsSearching] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const searchTimeout = useRef(null);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
+  const limit = 9;
 
   useEffect(() => {
     loadCars();
-  }, []);
+  }, [page]);
 
   const loadCars = async (model = '') => {
     try {
-      const query = model ? `?model=${model}` : '';
-      const res = await fetch(`/cars${query}`);
-      const data = await res.json();
+      const { data, total } = await getCars(model, page, limit);
       setCars(data);
+      setTotal(total);
     } catch (error) {
       console.error('Error cargando coches:', error);
     }
@@ -71,6 +73,14 @@ function App() {
 
     await deleteCar(id);
     loadCars(search); // Recargar la lista de coches después de eliminar
+  };
+
+  const handleNextPage = () => {
+    if (page * limit < total) setPage(page + 1);
+  };
+
+  const handlePrevPage = () => {
+    if (page > 1) setPage(page - 1);
   };
 
   return (
@@ -120,8 +130,8 @@ function App() {
                     </form>
                   )}
 
-                  {/* Derecha: Botón dinámico */}
-                  <div className="d-flex animate-pop">
+                  {/* Derecha: Botones dinámicos */}
+                  <div className="d-flex gap-2 animate-pop">
                     {showForm ? (
                       <button
                         className="btn btn-outline-secondary d-flex align-items-center"
@@ -131,16 +141,24 @@ function App() {
                         Volver a búsqueda
                       </button>
                     ) : (
-                      <button
-                        className="btn btn-primary d-flex align-items-center justify-content-center"
-                        onClick={() => {
-                          setEditingCar(null);
-                          setShowForm(true);
-                        }}
-                        style={{ width: "42px", height: "42px", padding: 0 }}
-                      >
-                        <PlusCircle size={20} />
-                      </button>
+                      <>
+                        <button
+                          className="btn btn-primary d-flex align-items-center justify-content-center"
+                          onClick={() => {
+                            setEditingCar(null);
+                            setShowForm(true);
+                          }}
+                        >
+                          Crea tu Coche
+                        </button>
+                        <button
+                          className="btn btn-outline-primary d-flex align-items-center"
+                          onClick={() => window.location.href = '/annual-sales'}
+                        >
+                          <BarChart className="me-2" size={30} />
+                          Ventas Anuales
+                        </button>
+                      </>
                     )}
                   </div>
                 </div>
@@ -154,13 +172,25 @@ function App() {
                 ) : (
                   <div className="animate-fade-up">
                     <CarList cars={cars} onEdit={handleEdit} onDelete={handleDelete} />
+                    <div className="pagination">
+                      <button onClick={handlePrevPage} disabled={page === 1}>
+                        Anterior
+                      </button>
+                      <span>Página {page}</span>
+                      <button onClick={handleNextPage} disabled={page * limit >= total}>
+                        Siguiente
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
             </div>
           }
         />
-        <Route path="/sales/:model" element={<SalesDetail />} />
+        <Route path="/sales/:model" element={<SalesCharts />} />
+        <Route 
+          path="/annual-sales" 
+          element={<SalesCharts initialViewAnnualSales={true}/>} /> {/* Nueva ruta */}
       </Routes>
     </Router>
   );

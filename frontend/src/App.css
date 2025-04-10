@@ -120,7 +120,6 @@ header p {
   padding-top: 1rem;
 }
 
-
 .car-card {
   position: relative;
   display: flex;
@@ -128,7 +127,6 @@ header p {
   height: 100%;
   padding-bottom: 3.5rem; /* espacio reservado para los botones */
 }
-
 
 .card.car-card:hover {
   transform: translateY(-5px);
@@ -196,6 +194,17 @@ header p {
   color: #ffffff;
 }
 
+.btn-outline-success {
+  color: #198754; /* Verde Bootstrap */
+  border: 1px solid #198754;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-success:hover {
+  background-color: #198754;
+  color: #ffffff;
+}
+
 /* Spinner */
 .spinner-border {
   width: 2rem;
@@ -206,6 +215,27 @@ header p {
 /* Animaciones */
 .animate-fade-in {
   animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.5s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 1.5s infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+.animate-zoom-in {
+  animation: zoom-in 0.5s ease-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
 }
 
 .navbar-brand {
@@ -224,8 +254,6 @@ input::placeholder {
 .content-container {
   padding-top: 120px; /* Ajuste por navbar fija */
 }
-
-
 
 @media (max-width: 768px) {
   .navbar .nav-link {
@@ -251,6 +279,46 @@ input::placeholder {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
@@ -361,3 +429,30 @@ input::placeholder {
   background: linear-gradient(to bottom, transparent, white);
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #0d6efd;
+  background-color: #ffffff;
+  color: #0d6efd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #0d6efd;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

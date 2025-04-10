@@ -49,14 +49,28 @@ def validate_car_data(car_data, cars):
 @cars_bp.route('/cars', methods=['GET'])
 def get_cars():
     model = request.args.get('model')  # Obtener el parámetro 'model' de la URL
+    page = int(request.args.get('page', 1))  # Página actual (por defecto 1)
+    limit = int(request.args.get('limit', 5))  # Límite de registros por página (por defecto 5)
     cars = read_db()
+
     if model:
         # Filtrar coches cuyo modelo contenga el texto proporcionado (sin distinción de mayúsculas/minúsculas)
         cars = [
             car for car in cars
             if any(word.lower().startswith(model.lower()) for word in car.get('model', '').split())
         ]
-    return jsonify(cars), 200
+
+    # Implementar paginación
+    start = (page - 1) * limit
+    end = start + limit
+    paginated_cars = cars[start:end]
+
+    return jsonify({
+        "data": paginated_cars,
+        "total": len(cars),
+        "page": page,
+        "limit": limit
+    }), 200
 
 @cars_bp.route('/cars', methods=['POST'])
 def create_car():
