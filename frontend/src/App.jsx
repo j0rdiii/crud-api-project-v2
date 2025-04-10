@@ -155,8 +155,8 @@ function App() {
                           className="btn btn-outline-primary d-flex align-items-center"
                           onClick={() => window.location.href = '/annual-sales'}
                         >
-                          <BarChart className="me-2" size={30} />
-                          Ventas Anuales
+                          <BarChart className="me-2" size={20} />
+                          Ventas
                         </button>
                       </>
                     )}
@@ -172,7 +172,7 @@ function App() {
                 ) : (
                   <div className="animate-fade-up">
                     <CarList cars={cars} onEdit={handleEdit} onDelete={handleDelete} />
-                    <div className="pagination">
+                    <div className="pagination animate-slide-in-bottom">
                       <button onClick={handlePrevPage} disabled={page === 1}>
                         Anterior
                       </button>

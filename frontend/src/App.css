@@ -221,6 +221,10 @@ header p {
   animation: slide-in 0.5s ease-out;
 }
 
+.animate-slide-in-bottom {
+  animation: slideInBottom 0.4s ease-out;
+}
+
 .animate-pulse {
   animation: pulse 1.5s infinite;
 }
@@ -264,9 +268,11 @@ input::placeholder {
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -354,6 +360,17 @@ input::placeholder {
   }
 }
 
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Entrada con fade suave */
 @keyframes fadeInSoft {
   0% {
@@ -429,30 +446,40 @@ input::placeholder {
   background: linear-gradient(to bottom, transparent, white);
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
 .pagination button {
-  padding: 0.5rem 1rem;
-  border: 1px solid #0d6efd;
-  background-color: #ffffff;
+  border: 2px solid #0d6efd;
+  background-color: white;
   color: #0d6efd;
-  border-radius: 5px;
+  padding: 8px 16px;
+  margin: 0 6px;
+  border-radius: 6px;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
-.pagination button:hover {
+.pagination button:hover:not(:disabled) {
   background-color: #0d6efd;
-  color: #ffffff;
-  border-radius: 5px;
+  color: white;
+  transform: translateY(-2px) scale(1.05);
 }
 
 .pagination button:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+}
+
+.pagination span {
+  font-weight: 500;
+  margin: 0 10px;
+  color: #333;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.4s ease-in-out;
 }

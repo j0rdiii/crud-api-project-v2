@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from models.sale import Sale
 import json
 import os
 
@@ -21,54 +22,79 @@ def read_sales_db():
 
 @sales_bp.route('/sales', methods=['GET'])
 def get_sales():
-    country = request.args.get('country')  # Obtener el parámetro 'country' de la URL
     model = request.args.get('model')  # Obtener el parámetro 'model' de la URL
-    year = request.args.get('year')  # Obtener el parámetro 'year' de la URL
-    page = int(request.args.get('page', 1))  # Página actual (por defecto 1)
-    limit = int(request.args.get('limit', 1000))  # Límite de registros por página (por defecto 5)
     sales = read_sales_db()
 
-    # Filtrar por país, modelo y/o año si se proporcionan
-    if country:
-        sales = [sale for sale in sales if sale['country'].lower() == country.lower()]
+    # Filtrar por modelo si se proporciona
     if model:
-        sales = [sale for sale in sales if sale['model'].lower() == model.lower()]
-    if year:
-        try:
-            year = int(year)
-            sales = [sale for sale in sales if sale['year'] == year]
-        except ValueError:
-            return jsonify({'error': 'Year must be a numeric value'}), 400
-
-    # Implementar paginación
-    start = (page - 1) * limit
-    end = start + limit
-    paginated_sales = sales[start:end]
+        sales = [sale for sale in sales if sale['model'].lower() == model.lower()]  # Filtrar por modelo
 
     return jsonify({
-        "data": paginated_sales,
+        "data": sales,
         "total": len(sales),
-        "page": page,
-        "limit": limit
     }), 200
 
 @sales_bp.route('/sales/annual', methods=['GET'])
 def get_annual_sales():
     sales = read_file(SALES_FILE)
-    cars = read_file(DB_FILE)
 
-    # Combinar datos de ventas y coches
-    annual_sales = {}
+    # Agrupar ventas por país
+    country_sales = {}
+    for sale in sales:
+        country = sale['country']
+        units = sale['units_sold']
+        if country not in country_sales:
+            country_sales[country] = 0
+        country_sales[country] += units
+
+    # Formatear los datos para el frontend
+    formatted_sales = [
+        {"country": country, "total_units": units}
+        for country, units in country_sales.items()
+    ]
+
+    # Ordenar por unidades vendidas de mayor a menor
+    formatted_sales.sort(key=lambda x: x["total_units"], reverse=True)
+
+    return jsonify(formatted_sales), 200
+
+@sales_bp.route('/sales/top-models', methods=['GET'])
+def get_top_models():
+    sales = read_file(SALES_FILE)
+
+    # Agrupar ventas por modelo
+    model_sales = {}
+    for sale in sales:
+        model = sale['model']
+        units = sale['units_sold']
+        if model not in model_sales:
+            model_sales[model] = 0
+        model_sales[model] += units
+
+    # Formatear los datos para el frontend
+    formatted_sales = [
+        {"model": model, "total_units": units}
+        for model, units in model_sales.items()
+    ]
+
+    # Ordenar por unidades vendidas de mayor a menor
+    formatted_sales.sort(key=lambda x: x["total_units"], reverse=True)
+
+    return jsonify(formatted_sales), 200
+
+@sales_bp.route('/sales/total-by-year', methods=['GET'])
+def get_total_sales_by_year():
+    sales = read_file(SALES_FILE)
+
+    # Agrupar ventas por año
+    year_sales = {}
     for sale in sales:
         year = sale['year']
         units = sale['units_sold']
-        annual_sales[year] = annual_sales.get(year, 0) + units
-
-    for car in cars:
-        year = car['year']
-        annual_sales[year] = annual_sales.get(year, 0)
+        year_sales[year] = year_sales.get(year, 0) + units
 
     # Formatear los datos para el frontend
-    formatted_sales = [{"year": year, "total_units": units} for year, units in sorted(annual_sales.items())]
+    formatted_sales = [{"year": year, "total_units": units} for year, units in year_sales.items()]
+    formatted_sales.sort(key=lambda x: x["year"])  # Ordenar por año
 
     return jsonify(formatted_sales), 200
